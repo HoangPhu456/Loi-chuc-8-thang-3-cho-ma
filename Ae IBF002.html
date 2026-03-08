@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Món quà 8/3 đặc biệt</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1a1a1a;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        /* Nút bấm mở quà */
+        #open-btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: white;
+            background: #ff4081;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        #open-btn:hover {
+            transform: scale(1.1);
+            background: #e91e63;
+        }
+
+        /* Vùng chứa quà (ẩn lúc đầu) */
+        #gift-content {
+            display: none;
+            text-align: center;
+        }
+
+        /* Trái tim phát sáng */
+        .heart {
+            background-color: #ff4081;
+            display: inline-block;
+            height: 80px;
+            position: relative;
+            transform: rotate(-45deg);
+            width: 80px;
+            animation: beat .8s infinite;
+            box-shadow: 0 0 40px #ff4081;
+        }
+
+        .heart:before, .heart:after {
+            content: "";
+            background-color: #ff4081;
+            border-radius: 50%;
+            height: 80px;
+            position: absolute;
+            width: 80px;
+        }
+
+        .heart:before { top: -40px; left: 0; }
+        .heart:after { left: 40px; top: 0; }
+
+        @keyframes beat {
+            0% { transform: scale(1) rotate(-45deg); }
+            50% { transform: scale(1.2) rotate(-45deg); }
+            100% { transform: scale(1) rotate(-45deg); }
+        }
+
+        /* Chữ đổi màu */
+        .colorful-text {
+            margin-top: 50px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbow 5s ease infinite;
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        p {
+            color: white;
+            font-size: 2rem;       /* Chữ đã được phóng to */
+            font-weight: bold;     /* Làm chữ đậm lên cho dễ đọc */
+            margin-top: 30px;      /* Tăng khoảng cách với dòng trên một chút */
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.3); /* Thêm hiệu ứng phát sáng nhẹ */
+            line-height: 1.4;      /* Giúp dòng chữ dễ đọc hơn khi xuống dòng */
+        }
+    </style>
+</head>
+<body>
+
+    <button id="open-btn" onclick="openGift()">BẤM DÔ ĐÂY NGAY! CÓ QUÀ 8/3 🎁, KO LỪA ĐẢO!!! </button>
+
+    <div id="gift-content">
+        <div class="heart"></div>
+        <h1 class="colorful-text">Chúc ae IBF002 8/3 dui dẻ!</h1>
+        <p style="color: white;">Luôn mạnh khỏe, xinh gái tinh quái nhìu người khoái, và nhớ cười nhìu nhe ae!</p>
+	<p style="color: white;">💪😝🫴🌹</p>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function openGift() {
+            // Ẩn nút bấm
+            document.getElementById('open-btn').style.display = 'none';
+            // Hiện quà
+            document.getElementById('gift-content').style.display = 'block';
+            // Phát nhạc
+            var music = document.getElementById('bg-music');
+            music.play();
+        }
+    </script>
+</body>
+</html>
